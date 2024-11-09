@@ -85,3 +85,10 @@
     background: #292929;
   }
   
+
+/* For Chrome, Safari, Edge */
+.remove-arrows::-webkit-outer-spin-button,
+.remove-arrows::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

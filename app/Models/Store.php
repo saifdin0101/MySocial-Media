@@ -10,6 +10,6 @@ class Store extends Model
     /** @use HasFactory<\Database\Factories\StoreFactory> */
     use HasFactory;
     protected $fillable =[
-        'title','price','image','condition','category'
+        'title','price','image','condition','category','user_id'
     ];
 }

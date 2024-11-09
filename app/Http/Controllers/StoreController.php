@@ -38,6 +38,7 @@ class StoreController extends Controller
             'category'=> 'required',
             'image'=> 'required ',
             'condition'=> 'required',
+            'user_id'=>''
             
 
         ]);
@@ -57,6 +58,7 @@ class StoreController extends Controller
             'category'=> $request->category,
             'image'=> $imageName,
             'condition'=> $request->condition,
+             'user_id'=>$request->user_id
            ]
         );
         return back();

@@ -3,7 +3,7 @@
         <div class=" w-[20%] max-sm:w-full flex flex-col gap-5 justify-center items-center rounded-lg mt-[1rem] h-[40rem] bg-[#1c1c1d]">
             <button type="button "
                 class="w-[12rem] boton-elegante text-[#e2e5e9]  rounded-lg border-[1px] bg-transparent border-gray-700 py-2"
-                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                data-bs-toggle="modal" id="createProductBtn" data-bs-target="#exampleModal">
                 Create Product +
             </button>
             <h1 class="text-white text-xl">Categories :</h1>
@@ -73,8 +73,8 @@
                                     </div>
                                     <input class="w-[19rem] text-[#e2e5e9] rounded-lg border-2 bg-transparent border-gray-700"
                                         name="title" placeholder="Title" type="text">
-                                    <input class="w-[19rem] text-[#e2e5e9] rounded-lg border-2 bg-transparent border-gray-700"
-                                        name="price" placeholder="Price" type="tel">
+                                    <input class="w-[19rem] text-[#e2e5e9] remove-arrows rounded-lg border-2 bg-transparent border-gray-700"
+                                        name="price" placeholder="Price" type="number">
                                     <select class="w-[19rem]  rounded-lg border-2 bg-transparent border-gray-700 text-[#646663]"
                                         name="category" id="">
                                         <option class="" disabled selected value="">Category</option>
@@ -85,6 +85,7 @@
                                         <option value="bag">Book</option>
         
                                     </select>
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <select class="w-[19rem] rounded-lg border-2 bg-transparent border-gray-700 text-[#646663]"
                                         name="condition" id="">
                                         <option class="" selected disabled value="">Condition</option>
@@ -123,7 +124,7 @@
                         <div class="flex justify-between items-center mt-2">
                             <span class="text-[#e2e5e9] font-bold text-lg">${{ $product->price }}</span>
                             <button class="px-4 py-2 cursor-pointer bg-[#1c1c1d] border border-[#646663] rounded-lg text-[#e2e5e9] hover:bg-[#333333]">
-                                Talk With the Owner
+                                {{ Auth::user()->id === $product->user_id ? 'im the Owner' : 'Talk With the Owner' }}
                             </button>
                         </div>
                     </div>
@@ -137,6 +138,7 @@
     </div>
 
     <script>
+        
         document.addEventListener('DOMContentLoaded', function() {
             let categoryItems = document.querySelectorAll('.category-item');
             let productItems = document.querySelectorAll('.product-item');
@@ -160,6 +162,8 @@
                 });
             });
         });
+        
+        
     </script>
     <!-- Modal -->
 
